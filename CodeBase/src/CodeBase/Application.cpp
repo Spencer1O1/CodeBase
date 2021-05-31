@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include "CodeBase/Events/ApplicationEvent.h"
+#include "CodeBase/Log.h"
+
 namespace CodeBase {
 
 	Application::Application() {
@@ -11,6 +14,9 @@ namespace CodeBase {
 	}
 
 	void Application::Run() {
+		WindowResizeEvent e(1280, 720);
+		CB_TRACE(e);
+
 		while (true);
 	}
 }
