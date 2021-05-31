@@ -20,6 +20,9 @@ project "CodeBase"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "cbpch.h"
+	pchsource "CodeBase/src/CodeBase/cbpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",

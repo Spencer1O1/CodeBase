@@ -1,9 +1,6 @@
 #pragma once
 
 #include "CodeBase/Core.h"
-//#include "spdlog/fmt/ostr.h"
-#include <string>
-#include <functional>
 
 namespace CodeBase {
 	// Events are currently blocking. Maybe add a buffer later

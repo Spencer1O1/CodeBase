@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace CodeBase {
 	class CODEBASE_API MouseMovedEvent : public Event {
 	public:

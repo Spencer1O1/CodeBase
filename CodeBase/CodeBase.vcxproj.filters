@@ -34,12 +34,18 @@
     <ClInclude Include="src\CodeBase\Log.h">
       <Filter>CodeBase</Filter>
     </ClInclude>
+    <ClInclude Include="src\CodeBase\cbpch.h">
+      <Filter>CodeBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CodeBase\Application.cpp">
       <Filter>CodeBase</Filter>
     </ClCompile>
     <ClCompile Include="src\CodeBase\Log.cpp">
+      <Filter>CodeBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CodeBase\cbpch.cpp">
       <Filter>CodeBase</Filter>
     </ClCompile>
   </ItemGroup>
