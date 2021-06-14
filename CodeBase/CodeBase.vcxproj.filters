@@ -7,6 +7,18 @@
     <Filter Include="CodeBase\Events">
       <UniqueIdentifier>{BF9A1096-2B26-7E5A-3437-014FA041DA5A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CodeBase\ImGui">
+      <UniqueIdentifier>{A57443D6-9142-37DC-7AD6-A70266431341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CodeBase.h" />
@@ -31,22 +43,51 @@
     <ClInclude Include="src\CodeBase\Events\MouseEvent.h">
       <Filter>CodeBase\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\CodeBase\ImGui\ImGuiLayer.h">
+      <Filter>CodeBase\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CodeBase\Layer.h">
+      <Filter>CodeBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CodeBase\LayerStack.h">
+      <Filter>CodeBase</Filter>
+    </ClInclude>
     <ClInclude Include="src\CodeBase\Log.h">
       <Filter>CodeBase</Filter>
     </ClInclude>
-    <ClInclude Include="src\CodeBase\cbpch.h">
+    <ClInclude Include="src\CodeBase\Window.h">
       <Filter>CodeBase</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cbpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\CodeBase\Application.cpp">
       <Filter>CodeBase</Filter>
     </ClCompile>
+    <ClCompile Include="src\CodeBase\ImGui\ImGuiLayer.cpp">
+      <Filter>CodeBase\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CodeBase\Layer.cpp">
+      <Filter>CodeBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CodeBase\LayerStack.cpp">
+      <Filter>CodeBase</Filter>
+    </ClCompile>
     <ClCompile Include="src\CodeBase\Log.cpp">
       <Filter>CodeBase</Filter>
     </ClCompile>
-    <ClCompile Include="src\CodeBase\cbpch.cpp">
-      <Filter>CodeBase</Filter>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cbpch.cpp" />
   </ItemGroup>
 </Project>

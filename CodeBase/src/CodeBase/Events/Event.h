@@ -1,5 +1,6 @@
 #pragma once
 
+#include "cbpch.h"
 #include "CodeBase/Core.h"
 
 namespace CodeBase {
@@ -9,7 +10,7 @@ namespace CodeBase {
 		None=0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -29,8 +30,9 @@ namespace CodeBase {
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class CODEBASE_API Event {
-		friend class EventDispatcher;
 	public:
+		bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -39,8 +41,6 @@ namespace CodeBase {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_Handled = false;
 	};
 
 	class EventDispatcher {
@@ -52,7 +52,7 @@ namespace CodeBase {
 		template<typename T>
 		bool Dispatch(EventFn<T> func) {
 			if (m_Event.GetEventType() == T::GetStaticType()) {
-				m_Event.m_Handled = func(*(T*)&m_Event);
+				m_Event.Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
