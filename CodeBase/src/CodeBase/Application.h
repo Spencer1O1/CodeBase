@@ -9,12 +9,15 @@
 
 #include "CodeBase/ImGui/ImGuiLayer.h"
 
+#include "CodeBase/Renderer/Shader.h"
+#include "CodeBase/Renderer/Buffer.h"
+
 namespace CodeBase {
 
 	class Application {
 	public:
 		Application();
-		virtual ~Application();
+		virtual ~Application() = default;
 
 		void Run();
 
@@ -35,6 +38,11 @@ namespace CodeBase {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		unsigned int m_VertexArray;
+		std::unique_ptr<Shader> m_Shader;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	private:
 		static Application* s_Instance;
 	};

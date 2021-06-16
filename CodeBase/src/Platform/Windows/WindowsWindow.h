@@ -1,8 +1,10 @@
 #pragma once
 
 #include "CodeBase/Window.h"
+#include "CodeBase/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
+
 
 namespace CodeBase {
 
@@ -27,6 +29,7 @@ namespace CodeBase {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;
