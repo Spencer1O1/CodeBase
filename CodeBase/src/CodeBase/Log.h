@@ -7,7 +7,7 @@
 
 namespace CodeBase {
 
-	class CODEBASE_API Log {
+	class Log {
 	public:
 		static void Init();
 

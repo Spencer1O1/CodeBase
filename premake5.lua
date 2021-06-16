@@ -1,8 +1,7 @@
 workspace "CodeBase"
 	architecture "x64"
-
 	startproject "Sandbox"
-	
+
 	configurations
 	{
 		"Debug",
@@ -17,15 +16,20 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "CodeBase/vendor/GLFW/include"
 IncludeDir["GLad"] = "CodeBase/vendor/GLad/include"
 IncludeDir["ImGui"] = "CodeBase/vendor/imgui"
+IncludeDir["glm"] = "CodeBase/vendor/glm"
 
-include "CodeBase/vendor/GLFW"
-include "CodeBase/vendor/GLad"
-include "CodeBase/vendor/imgui"
+group "Dependencies" 
+	include "CodeBase/vendor/GLFW"
+	include "CodeBase/vendor/GLad"
+	include "CodeBase/vendor/imgui"
+group ""
 
 project "CodeBase"
 	location "CodeBase"
-	kind "SharedLib"
+	kind "StaticLib"
+	staticruntime "on"
 	language "C++"
+	cppdialect "C++17"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -36,7 +40,14 @@ project "CodeBase"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+	
+	defines 
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -45,7 +56,8 @@ project "CodeBase"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.GLad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -57,8 +69,6 @@ project "CodeBase"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -67,31 +77,28 @@ project "CodeBase"
 			"CB_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
-	
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
-		}
 
 	filter "configurations:Debug"
 		defines "CB_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CB_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CB_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
+	staticruntime "on"
 	language "C++"
+	cppdialect "C++17"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -105,7 +112,9 @@ project "Sandbox"
 	includedirs
 	{
 		"CodeBase/vendor/spdlog/include",
-		"CodeBase/src"
+		"CodeBase/src",
+		"CodeBase/vendor",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -114,8 +123,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -125,15 +132,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "CB_DEBUG"
-		buildoptions "/MDd"
-		symbols "On"
+		runtime "Debug"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CB_RELEASE"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CB_DIST"
-		buildoptions "/MD"
-		optimize "On"
+		runtime "Release"
+		optimize "on"

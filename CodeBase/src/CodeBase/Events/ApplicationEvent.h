@@ -4,7 +4,7 @@
 
 namespace CodeBase {
 
-	class CODEBASE_API WindowResizeEvent : public Event {
+	class WindowResizeEvent : public Event {
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height) : m_Width(width), m_Height(height) {}
 
@@ -23,7 +23,7 @@ namespace CodeBase {
 		unsigned int m_Width, m_Height;
 	};
 
-	class CODEBASE_API WindowCloseEvent : public Event {
+	class WindowCloseEvent : public Event {
 	public:
 		WindowCloseEvent() {}
 
@@ -31,7 +31,7 @@ namespace CodeBase {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class CODEBASE_API AppTickEvent : public Event {
+	class AppTickEvent : public Event {
 	public:
 		AppTickEvent() {}
 
@@ -39,7 +39,7 @@ namespace CodeBase {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class CODEBASE_API AppUpdateEvent : public Event {
+	class AppUpdateEvent : public Event {
 	public:
 		AppUpdateEvent() {}
 
@@ -47,7 +47,7 @@ namespace CodeBase {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
-	class CODEBASE_API AppRenderEvent : public Event {
+	class AppRenderEvent : public Event {
 	public:
 		AppRenderEvent() {}
 

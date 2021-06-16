@@ -1,13 +1,19 @@
 #pragma once
 
 #ifdef CB_PLATFORM_WINDOWS
-	#ifdef CB_BUILD_DLL
-		#define CODEBASE_API __declspec(dllexport)
-	#else
-		#define CODEBASE_API __declspec(dllimport)
-	#endif
+	/*#if CB_DYNAMIC_LINK
+		#ifdef CB_BUILD_DLL
+			#define CODEBASE_API __declspec(dllexport)
+		#else
+			#define CODEBASE_API __declspec(dllimport)
+		#endif
+	#endif*/
 #else
 	#error CodeBase only supports Windows
+#endif
+
+#ifdef CB_DEBUG
+	#define CB_ENABLE_ASSERTS
 #endif
 
 #ifdef CB_CORE_ASSERTS

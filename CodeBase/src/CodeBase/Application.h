@@ -7,10 +7,11 @@
 #include "CodeBase/Events/Event.h"
 #include "CodeBase/Events/ApplicationEvent.h"
 
+#include "CodeBase/ImGui/ImGuiLayer.h"
 
 namespace CodeBase {
 
-	class CODEBASE_API Application {
+	class Application {
 	public:
 		Application();
 		virtual ~Application();
@@ -31,6 +32,7 @@ namespace CodeBase {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:
