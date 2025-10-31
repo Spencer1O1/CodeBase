@@ -1,2 +1,2 @@
 # CodeBase
-A project engine for my c++ stuff
+A project engine for c++ games and other stuff
